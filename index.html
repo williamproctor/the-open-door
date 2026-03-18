@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE OPEN DOOR — Pitch Deck</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Cinzel:wght@400;500;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --gold: #DAA520;
+  --gold-light: #FFD700;
+  --emerald: #50C878;
+  --turquoise: #00CED1;
+  --cream: #FFF8DC;
+  --warm-white: #FAF8F5;
+  --indigo: #0D0D2B;
+  --text-primary: #FAF8F5;
+  --text-secondary: rgba(250, 248, 245, 0.7);
+  --text-gold: #DAA520;
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background: var(--indigo);
+  color: var(--text-primary);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+.slide {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.slide::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(80, 200, 120, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+h1 { font-family: 'Cinzel', serif; font-weight: 400; letter-spacing: 0.25em; text-transform: uppercase; }
+h2 { font-family: 'Cinzel', serif; font-weight: 400; letter-spacing: 0.12em; }
+h3 { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-style: italic; }
+
+.body-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  max-width: 700px;
+}
+
+.accent-line { width: 60px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 24px auto; }
+.accent-line-left { width: 60px; height: 1px; background: linear-gradient(90deg, var(--gold), transparent); margin: 24px 0; }
+
+.tag {
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+/* TITLE SLIDE */
+.slide-title { background: var(--indigo); text-align: center; }
+
+.slide-title .glow-ring {
+  position: absolute;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  border: 1px solid rgba(80, 200, 120, 0.15);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse-ring 6s ease-in-out infinite;
+}
+.slide-title .glow-ring:nth-child(2) { width: 450px; height: 450px; border-color: rgba(218, 165, 32, 0.12); animation-delay: 1s; }
+.slide-title .glow-ring:nth-child(3) { width: 300px; height: 300px; border-color: rgba(0, 206, 209, 0.1); animation-delay: 2s; }
+
+.slide-title .center-glow {
+  position: absolute;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 248, 220, 0.15) 0%, rgba(80, 200, 120, 0.05) 40%, transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -55%);
+  filter: blur(30px);
+}
+
+@keyframes pulse-ring {
+  0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.03); }
+}
+
+.title-content { position: relative; z-index: 2; }
+.title-content h1 { font-size: 4rem; color: var(--warm-white); margin-bottom: 8px; text-shadow: 0 0 60px rgba(218, 165, 32, 0.2); }
+.title-content .subtitle { font-family: 'Cinzel', serif; font-weight: 400; font-size: 0.85rem; letter-spacing: 0.5em; color: var(--gold); margin-bottom: 40px; }
+.title-content .verse { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.15rem; color: rgba(250, 248, 245, 0.5); max-width: 500px; margin: 0 auto; line-height: 1.8; }
+.title-content .byline { font-family: 'Jost', sans-serif; font-weight: 300; font-size: 0.75rem; letter-spacing: 0.3em; color: rgba(250, 248, 245, 0.35); margin-top: 48px; text-transform: uppercase; }
+
+/* LAYOUTS */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; width: 100%; max-width: 1200px; align-items: center; }
+
+/* IMAGES */
+.img-wide { width: 100%; border-radius: 4px; aspect-ratio: 16/9; object-fit: cover; }
+
+.cine-strip { display: flex; gap: 8px; width: 100%; max-width: 1100px; margin-top: 12px; }
+.cine-strip .frame { flex: 1; aspect-ratio: 2.39/1; overflow: hidden; border-radius: 3px; position: relative; }
+.cine-strip .frame img { width: 100%; height: 100%; object-fit: cover; }
+.cine-strip .frame .frame-label {
+  position: absolute; bottom: 6px; left: 8px;
+  font-family: 'Jost', sans-serif; font-size: 0.5rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255,255,255,0.7); background: rgba(0,0,0,0.5); padding: 2px 8px; border-radius: 2px;
+}
+
+.character-strip { display: flex; gap: 12px; width: 100%; max-width: 1100px; margin-top: 12px; }
+.character-strip img { flex: 1; min-width: 0; border-radius: 4px; aspect-ratio: 16/9; object-fit: cover; }
+
+/* STATS */
+.stat-row { display: flex; gap: 48px; margin-top: 32px; }
+.stat { text-align: center; }
+.stat .number { font-family: 'Cinzel', serif; font-size: 2.5rem; font-weight: 600; color: var(--gold-light); line-height: 1; }
+.stat .label { font-family: 'Jost', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-secondary); margin-top: 8px; }
+
+/* LISTS */
+.feature-list { list-style: none; padding: 0; }
+.feature-list li {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: var(--text-secondary);
+  padding: 12px 0; border-bottom: 1px solid rgba(218, 165, 32, 0.08);
+  display: flex; align-items: flex-start; gap: 16px;
+}
+.feature-list li::before {
+  content: ''; width: 6px; height: 6px; background: var(--emerald); border-radius: 50%;
+  flex-shrink: 0; margin-top: 10px; box-shadow: 0 0 8px rgba(80, 200, 120, 0.4);
+}
+
+/* PALETTE */
+.palette { display: flex; gap: 16px; margin-top: 24px; flex-wrap: wrap; }
+.swatch { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.swatch-circle { width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); }
+.swatch-label { font-family: 'Jost', sans-serif; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-secondary); }
+
+/* PILLS */
+.pill-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+.pill { font-family: 'Jost', sans-serif; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 6px 16px; border: 1px solid rgba(218, 165, 32, 0.2); border-radius: 20px; color: var(--text-secondary); }
+.pill.emerald { border-color: rgba(80, 200, 120, 0.3); color: var(--emerald); }
+.pill.gold { border-color: rgba(218, 165, 32, 0.3); color: var(--gold); }
+.pill.cyan { border-color: rgba(0, 206, 209, 0.3); color: var(--turquoise); }
+
+/* SHOT TABLE */
+.shot-table { width: 100%; max-width: 1050px; border-collapse: collapse; margin-top: 24px; }
+.shot-table th { font-family: 'Jost', sans-serif; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); text-align: left; padding: 12px 14px; border-bottom: 1px solid rgba(218, 165, 32, 0.2); }
+.shot-table td { font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; color: var(--text-secondary); padding: 9px 14px; border-bottom: 1px solid rgba(255,255,255,0.03); }
+.shot-table tr:hover td { background: rgba(80, 200, 120, 0.03); }
+
+/* QUOTE */
+.quote {
+  font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.5rem;
+  color: var(--text-primary); max-width: 650px; text-align: center; line-height: 1.7; position: relative;
+}
+.quote::before { content: '\201C'; font-size: 5rem; color: rgba(218, 165, 32, 0.15); position: absolute; top: -40px; left: -30px; font-family: 'Cormorant Garamond', serif; }
+
+/* TIMELINE */
+.timeline { display: flex; flex-direction: column; width: 100%; max-width: 700px; }
+.timeline-item { display: flex; gap: 24px; padding: 16px 0; border-left: 1px solid rgba(218, 165, 32, 0.15); padding-left: 24px; position: relative; }
+.timeline-item::before { content: ''; width: 8px; height: 8px; background: var(--emerald); border-radius: 50%; position: absolute; left: -4px; top: 20px; box-shadow: 0 0 10px rgba(80, 200, 120, 0.4); }
+.timeline-item.done::before { background: var(--gold); box-shadow: 0 0 10px rgba(218, 165, 32, 0.4); }
+.timeline-phase { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.15em; color: var(--gold); min-width: 90px; }
+.timeline-phase.next { color: var(--emerald); }
+.timeline-desc { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--text-secondary); }
+
+/* SEPARATORS */
+.slide-sep { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, rgba(218, 165, 32, 0.1), rgba(80, 200, 120, 0.1), rgba(218, 165, 32, 0.1), transparent); }
+
+/* SLIDE NUMBER */
+.slide-number { position: absolute; bottom: 30px; right: 40px; font-family: 'Jost', sans-serif; font-size: 0.65rem; letter-spacing: 0.2em; color: rgba(250, 248, 245, 0.2); }
+
+/* NAV */
+nav { position: fixed; right: 20px; top: 50%; transform: translateY(-50%); z-index: 100; display: flex; flex-direction: column; gap: 10px; }
+nav a { width: 8px; height: 8px; border-radius: 50%; background: rgba(250, 248, 245, 0.15); transition: all 0.3s; display: block; }
+nav a:hover, nav a.active { background: var(--gold); box-shadow: 0 0 8px rgba(218, 165, 32, 0.4); }
+
+/* ANIMATIONS */
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* LENS GRID */
+.lens-card { padding: 16px; border: 1px solid rgba(218, 165, 32, 0.1); border-radius: 4px; }
+.lens-card .lens-name { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.15em; color: var(--gold); margin-bottom: 6px; }
+.lens-card .lens-desc { font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; color: var(--text-secondary); }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#s1" title="Title"></a>
+  <a href="#s2" title="Vision"></a>
+  <a href="#s3" title="Project"></a>
+  <a href="#s4" title="Story"></a>
+  <a href="#s5" title="Design"></a>
+  <a href="#s6" title="Characters"></a>
+  <a href="#s7" title="Boards"></a>
+  <a href="#s8" title="Cinematography"></a>
+  <a href="#s9" title="Shot List"></a>
+  <a href="#s10" title="Why GenAI"></a>
+  <a href="#s11" title="Production"></a>
+  <a href="#s12" title="Close"></a>
+</nav>
+
+<!-- SLIDE 1: TITLE -->
+<section class="slide slide-title" id="s1">
+  <div class="glow-ring"></div>
+  <div class="glow-ring"></div>
+  <div class="glow-ring"></div>
+  <div class="center-glow"></div>
+  <div class="title-content fade-in">
+    <div class="tag">A GenAI Cinematic Visual Narrative</div>
+    <h1>The Open Door</h1>
+    <div class="subtitle">Revelation 4</div>
+    <div class="accent-line"></div>
+    <p class="verse">&ldquo;Come up here, and I will show you the things that must take place.&rdquo;</p>
+    <div class="byline">AVS &mdash; AI Research &amp; Development 2026</div>
+  </div>
+  <div class="slide-number">01 / 12</div>
+</section>
+
+<div class="slide-sep"></div>
+
+<!-- SLIDE 2: VISION -->
+<section class="slide" id="s2">
+  <div class="fade-in" style="text-align:center; max-width:750px;">
+    <div class="tag">The Vision</div>
+    <h2 style="font-size:2rem; margin-bottom:24px;">What If Scripture Could Be Seen<br>the Way It Was Meant to Be Felt?</h2>
+    <div class="accent-line"></div>
+    <p class="body-text" style="text-align:center; margin:0 auto;">
+      Revelation chapter 4 is one of the most visually dense passages in the Bible &mdash; a throne of crystalline turquoise, four living creatures covered in eyes, 24 elders casting golden crowns across a sea of glass. Generations of artists have tried to capture it. Most have fallen short &mdash; reducing the sublime to the illustrative, the overwhelming to the merely ornamental.
+    </p>
+    <br>
+    <p class="body-text" style="text-align:center; margin:0 auto;">
+      <strong style="color:var(--text-primary)">The Open Door</strong> is a proof of concept &mdash; an entirely AI-generated cinematic short film that treats these sacred images with the reverence, scale, and visual sophistication they demand. Not a slideshow. Not an animation. A <em>film</em>.
+    </p>
+  </div>
+  <div class="slide-number">02 / 12</div>
+</section>
+
+<div class="slide-sep"></div>
+
+<!-- SLIDE 3: WHAT IS THIS -->
+<section class="slide" id="s3">
+  <div class="two-col fade-in">
+    <div>
+      <div class="tag">The Project</div>
+      <h2 style="font-size:1.8rem; margin-bottom:20px;">A Complete Production Package</h2>
+      <div class="accent-line-left"></div>
+      <p class="body-text">
+        This isn&rsquo;t a concept sketch or a mood board exercise. This is a fully developed production package, built from scratch, ready for execution:
+      </p>
+      <ul class="feature-list" style="margin-top:20px;">
+        <li>A professionally formatted Final Draft screenplay (two versions)</li>
+        <li>A detailed 20-shot cinematic shot list with lens, depth of field, and camera movement specs</li>
+        <li>8 character &amp; entity turnaround reference sheets for animation consistency</li>
+        <li>17 concept boards covering every major scene</li>
+        <li>A proprietary design philosophy &mdash; &ldquo;Radiant Threshold&rdquo;</li>
+        <li>A defined color palette with hex codes, temperature rules, and usage hierarchy</li>
+        <li>Production-ready GenAI character prompts for every entity</li>
+      </ul>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:16px;">
+      <img src="the_open_door_poster.png" class="img-wide" style="border-radius:4px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); aspect-ratio:auto;">
+      <div class="stat-row" style="justify-content:center;">
+        <div class="stat"><div class="number">20</div><div class="label">Cinematic Shots</div></div>
+        <div class="stat"><div class="number">8</div><div class="label">Character Sheets</div></div>
+        <div class="stat"><div class="number">17</div><div class="label">Concept Boards</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">03 / 12</div>
+</section>
+
+<div class="slide-sep"></div>
+
+<!-- SLIDE 4: THE STORY -->
+<section class="slide" id="s4">
+  <div class="fade-in" style="text-align:center; max-width:800px;">
+    <div class="tag">The Narrative</div>
+    <h2 style="font-size:1.8rem; margin-bottom:24px;">Three Acts. One Threshold.</h2>
+    <div class="accent-line"></div>
+  </div>
+  <div class="fade-in" style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:48px; max-width:1000px; margin-top:32px;">
+    <div style="text-align:center;">
+      <div style="font-family:'Cinzel',serif; font-size:3rem; color:rgba(218,165,32,0.2); line-height:1;">I</div>
+      <h3 style="font-size:1.3rem; color:var(--text-primary); margin:8px 0;">The Exile</h3>
+      <p class="body-text" style="font-size:1.05rem; text-align:center;">
+        Patmos. A stone dwelling at dusk. John &mdash; aged, exiled, alone &mdash; writes by lamplight. The palette is muted, earthy, terrestrial. Everything is heavy. Everything is <em>before</em>.
+      </p>
+    </div>
+    <div style="text-align:center;">
+      <div style="font-family:'Cinzel',serif; font-size:3rem; color:rgba(80,200,120,0.25); line-height:1;">II</div>
+      <h3 style="font-size:1.3rem; color:var(--text-primary); margin:8px 0;">The Threshold</h3>
+      <p class="body-text" style="font-size:1.05rem; text-align:center;">
+        A door of blazing light materializes in his room. A voice like a trumpet. The world stretches. John is pulled through a dimensional membrane into heaven&rsquo;s throne room &mdash; vast, crystalline, overwhelmingly luminous.
+      </p>
+    </div>
+    <div style="text-align:center;">
+      <div style="font-family:'Cinzel',serif; font-size:3rem; color:rgba(0,206,209,0.25); line-height:1;">III</div>
+      <h3 style="font-size:1.3rem; color:var(--text-primary); margin:8px 0;">The Revelation</h3>
+      <p class="body-text" style="font-size:1.05rem; text-align:center;">
+        The throne. The creatures. The elders falling. Crowns cast across a sea of glass. An architecture of worship laid bare &mdash; then the slow dissolve back to a man, sitting at a table, forever changed.
+      </p>
+    </div>
+  </div>
+  <div class="cine-strip fade-in" style="margin-top:48px;">
+    <div class="frame"><img src="Boards/Elderly_man_writing_202603180734.jpeg"><div class="frame-label">Act I</div></div>
+    <div class="frame"><img src="Boards/Portal_in_room_202603180732.jpeg"><div class="frame-label">The Threshold</div></div>
+    <div class="frame"><img src="Boards/John_before_divine_202603180736.jpeg"><div class="frame-label">Act II</div></div>
+    <div class="frame"><img src="Boards/John's_face_wide_202603180922.jpeg"><div class="frame-label">Act III</div></div>
+  </div>
+  <div class="slide-number">04 / 12</div>
+</section>
+
+<div class="slide-sep"></div>
+
+<!-- SLIDE 5: VISUAL LANGUAGE -->
+<section class="slide" id="s5">
+  <div class="two-col fade-in">
+    <div>
+      <div class="tag">Design Philosophy</div>
+      <h2 style="font-size:1.8rem; margin-bottom:20px;">Radiant Threshold</h2>
+      <div class="accent-line-left"></div>
+      <p class="body-text">
+        A proprietary visual language built on the premise that the most sacred moments in human experience occur at the boundary between what can be seen and what can only be felt.
+      </p>
+      <br>
+      <p class="body-text">
+        Light is not illumination &mdash; it is <em>material</em>. Something that can be layered, sculpted, and accumulated with the same deliberateness a mason lays stone. Every composition must feel as though someone spent countless hours calibrating the precise point where gold becomes white, where emerald dissolves into atmosphere, where form surrenders to radiance.
+      </p>
+      <div class="palette">
+        <div class="swatch"><div class="swatch-circle" style="background:#F5F0E0;"></div><div class="swatch-label">Jasper</div></div>
+        <div class="swatch"><div class="swatch-circle" style="background:#C0392B;"></div><div class="swatch-label">Sardius</div></div>
+        <div class="swatch"><div class="swatch-circle" style="background:#50C878;"></div><div class="swatch-label">Emerald</div></div>
+        <div class="swatch"><div class="swatch-circle" style="background:#FFD700;"></div><div class="swatch-label">Gold</div></div>
+        <div class="swatch"><div class="swatch-circle" style="background:#00CED1;"></div><div class="swatch-label">Turquoise</div></div>
+        <div class="swatch"><div class="swatch-circle" style="background:#FF6F00;"></div><div class="swatch-label">Amber</div></div>
+        <div class="swatch"><div class="swatch-circle" style="background:#FFF8DC;"></div><div class="swatch-label">Cream</div></div>
+        <div class="swatch"><div class="swatch-circle" style="background:#1A1A4E;"></div><div class="swatch-label">Indigo</div></div>
+      </div>
+      <div class="pill-row">
+        <span class="pill gold">Painterly</span>
+        <span class="pill emerald">Luminous</span>
+        <span class="pill cyan">Ethereal</span>
+        <span class="pill gold">Warm</span>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:12px;">
+      <img src="Boards/Glassy_sea_and_202603180832.jpeg" style="width:100%; border-radius:4px; box-shadow:0 10px 40px rgba(0,0,0,0.4);">
+      <img src="Boards/Man_seated_on_202603180752.jpg" style="width:100%; border-radius:4px; box-shadow:0 10px 40px rgba(0,0,0,0.4);">
+    </div>
+  </div>
+  <div class="slide-number">05 / 12</div>
+</section>
+
+<div class="slide-sep"></div>
+
+<!-- SLIDE 6: CHARACTERS -->
+<section class="slide" id="s6">
+  <div class="fade-in" style="text-align:center; max-width:800px;">
+    <div class="tag">Character Design</div>
+    <h2 style="font-size:1.8rem; margin-bottom:12px;">Turnaround Reference Sheets</h2>
+    <p class="body-text" style="text-align:center; margin:0 auto;">
+      Every character and entity has a three-view turnaround sheet &mdash; front, 3/4, and back &mdash; ensuring animation consistency across all 20 shots. Each design is grounded in specific biblical source material with supporting cross-references.
+    </p>
+  </div>
+  <div class="character-strip fade-in">
+    <img src="Character Reference Sheets/Character_turnaround_reference_202603171824.jpeg" alt="John">
+    <img src="Character Reference Sheets/Jehovah_seated_on_202603171827.jpeg" alt="Jehovah">
+    <img src="Character Reference Sheets/remove_dashed_box,_202603171845.jpeg" alt="Elder">
+  </div>
+  <div class="character-strip fade-in">
+    <img src="Character Reference Sheets/Character_turnaround_reference_202603171930.jpeg" alt="Lion">
+    <img src="Character Reference Sheets/Character_turnaround_reference_202603171932.jpeg" alt="Bull">
+    <img src="Character Reference Sheets/Creature_reference_sheet_202603180651.jpeg" alt="Man">
+  </div>
+  <div class="character-strip fade-in">
+    <img src="Character Reference Sheets/Character_turnaround_reference_202603180652.jpeg" alt="Eagle">
+    <img src="Character Reference Sheets/Lamp_entity_reference_202603180654.jpeg" alt="Lamp">
+  </div>
+  <div class="slide-number">06 / 12</div>
+</section>
+
+<div class="slide-sep"></div>
+
+<!-- SLIDE 7: STORYBOARDS -->
+<section class="slide" id="s7">
+  <div class="fade-in" style="text-align:center; max-width:800px;">
+    <div class="tag">Visual Development</div>
+    <h2 style="font-size:1.8rem; margin-bottom:12px;">Concept Boards &amp; Key Frames</h2>
+    <p class="body-text" style="text-align:center; margin:0 auto;">
+      Every major scene has been visualized as a concept board &mdash; from Patmos to the throne room to the final dissolve. These aren&rsquo;t placeholders. They are visual targets.
+    </p>
+  </div>
+  <div class="cine-strip fade-in">
+    <div class="frame"><img src="Boards/Elderly_man_writing_202603180734.jpeg"><div class="frame-label">Shot 02 &mdash; John at Table</div></div>
+    <div class="frame"><img src="Boards/Portal_in_room_202603180732.jpeg"><div class="frame-label">Shot 03 &mdash; The Open Door</div></div>
+    <div class="frame"><img src="Boards/Man's_face_encountering_202603180731.jpeg"><div class="frame-label">Shot 04 &mdash; The Voice</div></div>
+    <div class="frame"><img src="Boards/Man_stretched_by_202603180737.jpeg"><div class="frame-label">Shot 05 &mdash; The Ascent</div></div>
+  </div>
+  <div class="cine-strip fade-in">
+    <div class="frame"><img src="Boards/John_before_divine_202603180736.jpeg"><div class="frame-label">Shot 06 &mdash; First Sight</div></div>
+    <div class="frame"><img src="Boards/Painterly_digital_illustration,_202603180827.jpeg"><div class="frame-label">Shot 09 &mdash; Lightning</div></div>
+    <div class="frame"><img src="Boards/Painterly_digital_illustration,_202603180830.jpeg"><div class="frame-label">Shot 10 &mdash; Seven Lamps</div></div>
+    <div class="frame"><img src="Boards/Glassy_sea_and_202603180832.jpeg"><div class="frame-label">Shot 11 &mdash; Glassy Sea</div></div>
+  </div>
+  <div class="cine-strip fade-in">
+    <div class="frame"><img src="Boards/Lion_creature_emerges_202603180915.jpeg"><div class="frame-label">Shot 12 &mdash; The Lion</div></div>
+    <div class="frame"><img src="Boards/Bull_creature_with_202603180916.jpeg"><div class="frame-label">Shot 13 &mdash; The Bull</div></div>
+    <div class="frame"><img src="Boards/Man_with_glowing_202603180918.jpeg"><div class="frame-label">Shot 14 &mdash; Face of a Man</div></div>
+    <div class="frame"><img src="Boards/Eagle_face_sharp_202603180918.jpeg"><div class="frame-label">Shot 15 &mdash; The Eagle</div></div>
+  </div>
+  <div class="cine-strip fade-in">
+    <div class="frame"><img src="Boards/Creatures_crying_holy_202603180918.jpeg"><div class="frame-label">Shot 16 &mdash; Holy, Holy, Holy</div></div>
+    <div class="frame"><img src="Boards/Crowns_cast_before_202603180920.jpeg"><div class="frame-label">Shot 18 &mdash; Crowns Cast</div></div>
+    <div class="frame"><img src="Boards/Aerial_shot_of_202603180928.jpeg"><div class="frame-label">Shot 19 &mdash; Full Throne Room</div></div>
+    <div class="frame"><img src="Boards/John's_face_wide_202603180922.jpeg"><div class="frame-label">Shot 20 &mdash; Return to John</div></div>
+  </div>
+  <div class="slide-number">07 / 12</div>
+</section>
+
+<div class="slide-sep"></div>
+
+<!-- SLIDE 8: CINEMATOGRAPHY -->
+<section class="slide" id="s8">
+  <div class="two-col fade-in">
+    <div>
+      <div class="tag">Cinematography</div>
+      <h2 style="font-size:1.8rem; margin-bottom:20px;">Shot on a Virtual Camera</h2>
+      <div class="accent-line-left"></div>
+      <p class="body-text">
+        Every frame specifies a real-world lens equivalent, depth of field, and camera movement. This isn&rsquo;t a storyboard &mdash; it&rsquo;s a director&rsquo;s shot list, designed for execution.
+      </p>
+      <div style="margin-top:28px; display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+        <div class="lens-card"><div class="lens-name">14mm Ultra-Wide</div><div class="lens-desc">Overwhelming scale &mdash; the throne room&rsquo;s vastness, the aerial view, the crystalline sea</div></div>
+        <div class="lens-card"><div class="lens-name">85mm Portrait</div><div class="lens-desc">Intimacy &mdash; John&rsquo;s face, the man-faced creature, the elder&rsquo;s fall</div></div>
+        <div class="lens-card"><div class="lens-name">200mm Telephoto</div><div class="lens-desc">Compression &amp; power &mdash; isolating the throne, creature reveals at f/1.2</div></div>
+        <div class="lens-card"><div class="lens-name">100mm Macro</div><div class="lens-desc">Detail &amp; texture &mdash; the golden crown on glass, materiality made sacred</div></div>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:24px; align-items:center;">
+      <div style="text-align:center;">
+        <div style="font-family:'Cinzel',serif; font-size:0.7rem; letter-spacing:0.2em; color:var(--gold); margin-bottom:8px;">ASPECT RATIO</div>
+        <div style="font-family:'Cinzel',serif; font-size:3.5rem; color:var(--text-primary); line-height:1;">2.39:1</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1rem; color:var(--text-secondary); margin-top:4px;">Anamorphic Widescreen</div>
+      </div>
+      <div class="accent-line"></div>
+      <div style="text-align:center;">
+        <div style="font-family:'Cinzel',serif; font-size:0.7rem; letter-spacing:0.2em; color:var(--gold); margin-bottom:12px;">DEPTH OF FIELD AS STORYTELLING</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.05rem; color:var(--text-secondary); line-height:1.8; max-width:350px;">
+          <strong style="color:var(--text-primary)">Deep</strong> when the space itself is the subject.<br>
+          <strong style="color:var(--text-primary)">Shallow</strong> when emotion is the subject.<br>
+          <strong style="color:var(--text-primary)">Ultra-shallow</strong> for maximum intimacy.<br>
+          <strong style="color:var(--text-primary)">Rack focus</strong> for transitions between worlds.
+        </div>
+      </div>
+      <div class="accent-line"></div>
+      <div style="text-align:center;">
+        <div style="font-family:'Cinzel',serif; font-size:0.7rem; letter-spacing:0.2em; color:var(--gold); margin-bottom:12px;">COLOR TEMPERATURE ARC</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.05rem; color:var(--text-secondary); line-height:1.8; max-width:350px;">
+          Cool earth tones &rarr; the break &rarr; full heavenly warmth &rarr; return to earth, but <em>warmer than before</em>.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">08 / 12</div>
+</section>
+
+<div class="slide-sep"></div>
+
+<!-- SLIDE 9: SHOT LIST -->
+<section class="slide" id="s9">
+  <div class="fade-in" style="width:100%; max-width:1100px;">
+    <div style="text-align:center;">
+      <div class="tag">Complete Shot List</div>
+      <h2 style="font-size:1.6rem; margin-bottom:24px;">20 Shots. One Continuous Arc.</h2>
+    </div>
+    <table class="shot-table">
+      <thead><tr><th>Shot</th><th>Verse</th><th>Camera</th><th>Lens</th><th>DoF</th><th>Subject</th></tr></thead>
+      <tbody>
+        <tr><td>01</td><td>&ldquo;After this&hellip;&rdquo;</td><td>EWS Static</td><td>200mm</td><td>Deep</td><td>Patmos Establishing</td></tr>
+        <tr><td>02</td><td>&ldquo;After this&hellip;&rdquo;</td><td>MCU</td><td>85mm</td><td>Shallow</td><td>John at Table</td></tr>
+        <tr><td>03</td><td>&ldquo;An opened door&rdquo;</td><td>POV Rack</td><td>35mm</td><td>Rack Focus</td><td>The Open Door</td></tr>
+        <tr><td>04</td><td>&ldquo;Voice like trumpet&rdquo;</td><td>ECU</td><td>135mm</td><td>Ultra</td><td>John&rsquo;s Eyes</td></tr>
+        <tr><td>05</td><td>&ldquo;Power of the spirit&rdquo;</td><td>Vertigo</td><td>Variable</td><td>Transition</td><td>The Ascent</td></tr>
+        <tr><td>06</td><td>&ldquo;A throne in heaven&rdquo;</td><td>EWS</td><td>14mm</td><td>Deep</td><td>First Sight of Throne Room</td></tr>
+        <tr><td>07</td><td>&ldquo;Jasper and sardius&rdquo;</td><td>Push-in</td><td>200mm</td><td>Shallow</td><td>Throne Revealed</td></tr>
+        <tr><td>08</td><td>&ldquo;24 thrones&rdquo;</td><td>Behind Throne</td><td>35mm</td><td>Deep</td><td>The Circle Revealed</td></tr>
+        <tr><td>09</td><td>&ldquo;Lightning and thunders&rdquo;</td><td>Wide</td><td>24mm</td><td>Deep</td><td>Lightning from Throne</td></tr>
+        <tr><td>10</td><td>&ldquo;Seven lamps of fire&rdquo;</td><td>Low Angle</td><td>85mm</td><td>Shallow</td><td>Seven Lamps</td></tr>
+        <tr><td>11</td><td>&ldquo;Glassy sea&rdquo;</td><td>Surface EWS</td><td>14mm</td><td>Deep</td><td>The Crystalline Sea</td></tr>
+        <tr><td>12</td><td>&ldquo;Like a lion&rdquo;</td><td>Slow Reveal</td><td>200mm f/1.2</td><td>Paper-thin</td><td>Lion Creature</td></tr>
+        <tr><td>13</td><td>&ldquo;Like a young bull&rdquo;</td><td>Low Angle Up</td><td>200mm f/1.2</td><td>Paper-thin</td><td>Bull Creature</td></tr>
+        <tr><td>14</td><td>&ldquo;Face like a man&rsquo;s&rdquo;</td><td>Eye Level</td><td>200mm f/1.2</td><td>Paper-thin</td><td>Man-faced Creature</td></tr>
+        <tr><td>15</td><td>&ldquo;A flying eagle&rdquo;</td><td>Low Angle Up</td><td>200mm f/1.2</td><td>Paper-thin</td><td>Eagle Creature</td></tr>
+        <tr><td>16</td><td>&ldquo;Holy, holy, holy&rdquo;</td><td>Intercut ECUs</td><td>200mm</td><td>Ultra</td><td>Four Mouths Declaring</td></tr>
+        <tr><td>17</td><td>&ldquo;Elders fall down&rdquo;</td><td>Tracking Slo-Mo</td><td>85mm</td><td>Shallow</td><td>One Elder Falls</td></tr>
+        <tr><td>18</td><td>&ldquo;Cast their crowns&rdquo;</td><td>Macro Floor</td><td>100mm</td><td>Ultra</td><td>Crown on Glass</td></tr>
+        <tr><td>19</td><td>&ldquo;You are worthy&rdquo;</td><td>Aerial Top-Down</td><td>14mm</td><td>Deep</td><td>Full Throne Room</td></tr>
+        <tr><td>20</td><td>Resolution</td><td>Dissolve MCU</td><td>85mm</td><td>Shallow</td><td>John &mdash; After</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="slide-number">09 / 12</div>
+</section>
+
+<div class="slide-sep"></div>
+
+<!-- SLIDE 10: WHY GENAI -->
+<section class="slide" id="s10">
+  <div class="fade-in" style="text-align:center; max-width:800px;">
+    <div class="tag">The Medium</div>
+    <h2 style="font-size:1.8rem; margin-bottom:24px;">Why Generative AI?</h2>
+    <div class="accent-line"></div>
+    <div class="quote" style="margin-top:32px;">
+      The most sacred moments in human experience occur at the boundary between what can be seen and what can only be felt.
+    </div>
+    <div class="accent-line"></div>
+  </div>
+  <div class="fade-in" style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:40px; max-width:1000px; margin-top:24px;">
+    <div style="text-align:center; padding:24px; border:1px solid rgba(218,165,32,0.06); border-radius:4px;">
+      <div style="font-family:'Cinzel',serif; font-size:0.75rem; letter-spacing:0.15em; color:var(--gold); margin-bottom:12px;">ACCESSIBILITY</div>
+      <p class="body-text" style="font-size:1rem; text-align:center;">
+        Traditional cinematic depictions of Revelation require massive studio budgets. GenAI democratizes visual storytelling &mdash; a single creator with deep domain knowledge can produce gallery-quality visual narrative.
+      </p>
+    </div>
+    <div style="text-align:center; padding:24px; border:1px solid rgba(80,200,120,0.06); border-radius:4px;">
+      <div style="font-family:'Cinzel',serif; font-size:0.75rem; letter-spacing:0.15em; color:var(--emerald); margin-bottom:12px;">SCRIPTURAL FIDELITY</div>
+      <p class="body-text" style="font-size:1rem; text-align:center;">
+        Scripture describes phenomena that defy physical photography &mdash; faces consumed by light, creatures covered in eyes, seas of crystal. GenAI can render the impossible as the plausible.
+      </p>
+    </div>
+    <div style="text-align:center; padding:24px; border:1px solid rgba(0,206,209,0.06); border-radius:4px;">
+      <div style="font-family:'Cinzel',serif; font-size:0.75rem; letter-spacing:0.15em; color:var(--turquoise); margin-bottom:12px;">ITERATION AT SCALE</div>
+      <p class="body-text" style="font-size:1rem; text-align:center;">
+        The character sheets and prompts form a reproducible pipeline. Each entity can be regenerated at higher fidelity as models improve &mdash; the creative direction persists, the execution sharpens.
+      </p>
+    </div>
+  </div>
+  <div class="slide-number">10 / 12</div>
+</section>
+
+<div class="slide-sep"></div>
+
+<!-- SLIDE 11: PRODUCTION SCOPE -->
+<section class="slide" id="s11">
+  <div class="two-col fade-in">
+    <div>
+      <div class="tag">Production Scope</div>
+      <h2 style="font-size:1.8rem; margin-bottom:20px;">What Exists Today &amp; What&rsquo;s Next</h2>
+      <div class="accent-line-left"></div>
+      <div class="timeline" style="margin-top:16px;">
+        <div class="timeline-item done"><div><div class="timeline-phase">Complete</div><div class="timeline-desc">Screenplay &mdash; Final Draft format, two versions (cinematic &amp; narrative)</div></div></div>
+        <div class="timeline-item done"><div><div class="timeline-phase">Complete</div><div class="timeline-desc">20-shot cinematic shot list with full camera specifications</div></div></div>
+        <div class="timeline-item done"><div><div class="timeline-phase">Complete</div><div class="timeline-desc">8 character turnaround reference sheets</div></div></div>
+        <div class="timeline-item done"><div><div class="timeline-phase">Complete</div><div class="timeline-desc">17 concept boards covering all major scenes</div></div></div>
+        <div class="timeline-item done"><div><div class="timeline-phase">Complete</div><div class="timeline-desc">&ldquo;Radiant Threshold&rdquo; design philosophy &amp; color system</div></div></div>
+        <div class="timeline-item done"><div><div class="timeline-phase">Complete</div><div class="timeline-desc">Production-ready GenAI prompts for all characters and scenes</div></div></div>
+        <div class="timeline-item"><div><div class="timeline-phase next">Next</div><div class="timeline-desc">High-fidelity frame generation at target resolution</div></div></div>
+        <div class="timeline-item"><div><div class="timeline-phase next">Next</div><div class="timeline-desc">Motion &amp; transition work &mdash; camera movements, dissolves, dolly zooms</div></div></div>
+        <div class="timeline-item"><div><div class="timeline-phase next">Next</div><div class="timeline-desc">Sound design &amp; score &mdash; spatial audio, ambient throne room acoustics</div></div></div>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:16px;">
+      <img src="Boards/Aerial_shot_of_202603180928.jpeg" style="width:100%; border-radius:4px; box-shadow:0 10px 40px rgba(0,0,0,0.4);">
+      <img src="Boards/Crowns_cast_before_202603180920.jpeg" style="width:100%; border-radius:4px; box-shadow:0 10px 40px rgba(0,0,0,0.4);">
+    </div>
+  </div>
+  <div class="slide-number">11 / 12</div>
+</section>
+
+<div class="slide-sep"></div>
+
+<!-- SLIDE 12: CLOSE -->
+<section class="slide slide-title" id="s12">
+  <div class="glow-ring"></div>
+  <div class="glow-ring"></div>
+  <div class="glow-ring"></div>
+  <div class="center-glow"></div>
+  <div class="title-content fade-in">
+    <div class="tag">The Open Door</div>
+    <h2 style="font-size:2.2rem; margin-bottom:24px; line-height:1.4;">He Will Write This Down.<br>He Has To.</h2>
+    <div class="accent-line"></div>
+    <p class="verse" style="margin-top:24px;">
+      &ldquo;You are worthy, Jehovah our God, to receive the glory and the honor and the power, because you created all things, and because of your will they came into existence and were created.&rdquo;
+    </p>
+    <p style="font-family:'Jost',sans-serif; font-size:0.7rem; letter-spacing:0.2em; color:rgba(250,248,245,0.3); margin-top:8px;">REVELATION 4:11</p>
+    <div class="accent-line" style="margin-top:40px;"></div>
+    <div class="byline">AVS &mdash; AI Research &amp; Development 2026</div>
+  </div>
+  <div class="slide-number">12 / 12</div>
+</section>
+
+<script>
+const fadeEls = document.querySelectorAll('.fade-in');
+const sections = document.querySelectorAll('.slide');
+const navLinks = document.querySelectorAll('nav a');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+fadeEls.forEach(el => observer.observe(el));
+
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id));
+    }
+  });
+}, { threshold: 0.4 });
+sections.forEach(s => navObserver.observe(s));
+</script>
+</body>
+</html>
